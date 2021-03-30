@@ -20,18 +20,24 @@ class Stack:
         self.arr.append(x)
 
     def pop(self):
-        self.arr.pop(len(self.arr) - 1)
+        return self.arr.pop(len(self.arr) - 1)
 
 
 stack = Stack()
 n = int(input("Введите кол-во элементов в стеке:\n"))
+print("Введите числа:")
 for i in range(n):
-    a = int(input("Введите число:\n"))
+    a = int(input())
     stack.push(a)
 
 sum_of_num = 0
-for i in range(n):
-    sum_of_num += stack.pop()
 
-average = sum_of_num/n
+for i in range(n):
+    element = stack.pop()
+    sum_of_num += element
+
+average = sum_of_num / n
+if average % 1 == 0:
+    average = int(average)
 stack.push(average)
+print(stack.arr)
