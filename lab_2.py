@@ -4,12 +4,13 @@ from typing import List
 # 1 задание
 x = int(input("Какое задание выполнить 1 или 2?\n"))
 if x == 1:
+    # класс узла, который хранит текущее значение и указатель на следующий узел
     class Node:
         def __init__(self, value=None, next=None):
             self.value = value
             self.next = next
 
-
+    # сортировка по наименованию тура
     def sort_by_name():
         list_of_values = [records.first.value, records.first.next.value, records.first.next.next.value]
         list_of_values.sort(key=lambda sold_tour: sold_tour.name)
@@ -19,7 +20,7 @@ if x == 1:
         records.first = Node(list_of_values[0], records.first)
         return
 
-
+    # сортировка по цене одного дня
     def sort_by_price():
         list_of_values = [records.first.value, records.first.next.value, records.first.next.next.value]
         list_of_values.sort(key=lambda sold_tour: sold_tour.price_rub)
@@ -29,7 +30,7 @@ if x == 1:
         records.first = Node(list_of_values[0], records.first)
         return
 
-
+    # сортировка по дате заезда
     def sort_by_date():
         list_of_values = [records.first.value, records.first.next.value, records.first.next.next.value]
         list_of_values.sort(key=lambda sold_tour: sold_tour.date_in)
@@ -39,7 +40,7 @@ if x == 1:
         records.first = Node(list_of_values[0], records.first)
         return
 
-
+    # поиск по одному из полей
     def find_by(val):
         list_of_values = [records.first.value, records.first.next.value, records.first.next.next.value]
         if type(val) is str:
@@ -63,7 +64,7 @@ if x == 1:
         else:
             return "Неправильно задан элемент"
 
-
+    # класс односвязного списка
     class LinkedList:
         def __init__(self):
             self.first = None
@@ -81,7 +82,7 @@ if x == 1:
         def clear(self):
             self.__init__()
 
-
+    # класс учетной записи о проданном туре
     class SoldTour:
 
         def __init__(self,
@@ -112,11 +113,11 @@ if x == 1:
                              str(self.cur_exchange_rate),
                              str(self.num_of_cur)))
 
-
+    # создание и заполнение односвязного списка данными учетных записей
     records = LinkedList()
     records.first = Node(SoldTour("Incredible Egypt",
                                   "Popov",
-                                  40000,
+                                  7000,
                                   [2015, 7, 9],
                                   8,
                                   3,
@@ -124,7 +125,7 @@ if x == 1:
                                   100), None)
     records.first = Node(SoldTour("Calm Japan",
                                   "Emeev",
-                                  52000,
+                                  9000,
                                   [2014, 5, 15],
                                   12,
                                   5,
@@ -132,23 +133,26 @@ if x == 1:
                                   100), records.first)
     records.first = Node(SoldTour("Mother Russia",
                                   "Smith",
-                                  56000,
+                                  5000,
                                   [2020, 1, 7],
                                   7,
                                   1,
                                   71.2,
                                   100), records.first)
+    # тестирование сортировок и вывод сортированных списков
     sort_by_name()
     print(records)
     sort_by_price()
     print(records)
     sort_by_date()
     print(records)
+    # тестирование поиска по полю
     print(find_by('Egypt'))
     print(find_by(52000))
     print(find_by(date(2020, 1, 7)))
 # 2 задание
 else:
+    # класс стека
     class Stack:
         arr = []
 
@@ -158,7 +162,7 @@ else:
         def pop(self):
             return self.arr.pop(len(self.arr) - 1)
 
-
+    # создание и заполнение стека
     stack = Stack()
     n = int(input("Введите кол-во элементов в стеке:\n"))
     print("Введите числа:")
@@ -166,13 +170,15 @@ else:
         a = int(input())
         stack.push(a)
 
+    # извлечение элементов и расчет среднего арифметического
     sum_of_num = 0
-
     for i in range(n):
         element = stack.pop()
         sum_of_num += element
 
     average = sum_of_num / n
+
+    # помещение среднего арифметического в пустой стек и вывод стека
     if average % 1 == 0:
         average = int(average)
     stack.push(average)
