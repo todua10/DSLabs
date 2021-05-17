@@ -1,3 +1,7 @@
+import timeit
+test_code_1 = '''import random
+
+
 # Сортировка выбором
 def selection_sort(list1):
     for i in range(len(list1)):
@@ -15,6 +19,13 @@ def selection_sort(list1):
         list1[i], list1[min_val_index] = list1[min_val_index], list1[i]
 
 
+# Создаем неотсортированный список
+example_list1 = [(-1) ** random.randint(1, 2) * random.randint(0, 2 ** 63 - 1) for i in range(100)]
+# Записываем код сортировки выбором в переменную test_code_1
+example_list2 = example_list1.copy()
+selection_sort(example_list2)'''
+
+test_code_2 = '''import random
 # Сортировка слиянием
 def merge_sort(list2):
     if len(list2) > 1:
@@ -74,13 +85,9 @@ def merge_sort(list2):
             j += 1
             k += 1
 
-
 # Создаем неотсортированный список
-example_list1 = [56, 41, -12, 31, -1, 24, 2, 101, -18]
-# Сортируем список выбором
-example_list2 = example_list1.copy()
-selection_sort(example_list2)
-# Сортируем список слиянием
+example_list1 = [(-1) ** random.randint(1, 2) * random.randint(0, 2 ** 63 - 1) for i in range(100)]
+# Записываем код сортировки слиянием в переменную test_code_2
 example_list3 = example_list1.copy()
 merge_sort(example_list3)
 # Создаем копию отсортированного списка без отрицательных элементов
@@ -91,7 +98,10 @@ for i in example_list3.copy():
 for i in example_list1:
     if i < 0:
         a = example_list1.index(i)
-        example_list3.insert(a, i)
+        example_list3.insert(a, i)'''
+# Замеряем время выполнения кода сортировок
+time_1 = timeit.timeit(test_code_1, number=1)
+time_2 = timeit.timeit(test_code_2, number=1)
 
-print(example_list2)
-print(example_list3)
+print("Время выполнения кода сортировки выбором(в секундах): ", time_1)
+print("Время выполнения кода сортировки слиянием(в секундах): ", time_2)
