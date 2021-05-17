@@ -1,6 +1,7 @@
 import sys
 
 
+# 1 задание
 # Функция вывода индекса минимального по модулю отрицательного числа
 def index_min():
     n = int(input("Введите размер массива: "))
@@ -19,6 +20,7 @@ def index_min():
     print(index_min_abs_neg)
 
 
+# 2 задание
 # Функция перекрытия строки
 def overlapping_strings():
     origin_str = input("Введите оригинальную строку: ")
